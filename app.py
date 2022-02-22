@@ -1,4 +1,4 @@
-import sys
+import sys, os
 
 from PyQt5 import QtWidgets, QtGui
 from design import Ui_MainWindow
@@ -7,7 +7,12 @@ from calculator import Calculator
 class Window(QtWidgets.QMainWindow, Calculator):
   def __init__(self):
     super(Window, self).__init__()
-    self.setWindowIcon(QtGui.QIcon("%s/app.ico" % ("/".join(__file__.split("\\")[:-1]))))
+
+    if (hasattr(sys, "_MEIPASS")):
+      self.setWindowIcon(QtGui.QIcon(os.path.join(sys._MEIPASS, "app.ico")))
+    else:
+      self.setWindowIcon(QtGui.QIcon("app.ico"))
+      
     self.ui = Ui_MainWindow()
     self.ui.setupUi(self)
 
