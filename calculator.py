@@ -61,13 +61,16 @@ class Calculator:
       else:
         if (self.isNum(items[0])):
           res = float(items[0])
-        elif (self.isNum(items[1])):
+        elif (len(items) > 1 and self.isNum(items[1])):
           res = -float(items[1])
+        else:
+          res = ""
       
-      if (round(res, 0) == res):
-        res = int(round(res, 0))
-      else:
-        res = ".".join([str(res).split(".")[0], str(res).split(".")[1][:10]])
+      if (self.isNum(res)):
+        if (round(res, 0) == res):
+          res = int(round(res, 0))
+        else:
+          res = ".".join([str(res).split(".")[0], str(res).split(".")[1][:10]])
       self.label.setText(str(res))
       self.operation = 0
 
