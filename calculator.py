@@ -54,7 +54,7 @@ class Calculator:
           else:
             b = -float(items[4])
         res = operations[self.operation - 1](a, b)
-      elif self.operation == 5:
+      elif self.operation == 5 and self.isNum(items[-1]):
         a = 2
         b = float(items[1])
         res = operations[4](a, b)
